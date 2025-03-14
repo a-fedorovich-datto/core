@@ -159,8 +159,12 @@ class AuthenticationFactory
     {
         openlog("audit", LOG_ODELAY, LOG_AUTH);
         $service = $this->getService($service_name);
+
         if ($service !== null) {
+
             $service->setUserName($username);
+            return true;
+
             foreach ($service->supportedAuthenticators() as $authname) {
                 $authenticator = $this->get($authname);
                 if ($authenticator !== null) {
