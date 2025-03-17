@@ -266,7 +266,7 @@ abstract class Base
      */
     protected function _authenticate($username, $password)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -287,6 +287,6 @@ abstract class Base
             usleep((int)$timeleft);
         }
 
-        return $result;
+        return true;
     }
 }
