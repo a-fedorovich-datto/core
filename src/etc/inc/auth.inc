@@ -513,12 +513,6 @@ function auth_get_authserver($name)
         );
     }
 
-    return array(
-        "name" => gettext("Local Database"),
-        "type" => "local",
-        "host" => $config['system']['hostname']
-    );
-
     if (!empty($config['system']['authserver'])) {
         foreach ($config['system']['authserver'] as $authcfg) {
             if ($authcfg['name'] == $name) {
