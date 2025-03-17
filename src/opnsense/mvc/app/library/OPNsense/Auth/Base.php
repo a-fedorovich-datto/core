@@ -287,6 +287,6 @@ abstract class Base
             usleep((int)$timeleft);
         }
 
-        return true;
+        return $result;
     }
 }

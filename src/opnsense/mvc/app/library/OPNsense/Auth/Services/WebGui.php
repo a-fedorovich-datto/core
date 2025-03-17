@@ -63,7 +63,7 @@ class WebGui implements IService
         } else {
             $result[] = 'Local Database';
         }
-        return $result;
+        return [];
     }
 
      /**
