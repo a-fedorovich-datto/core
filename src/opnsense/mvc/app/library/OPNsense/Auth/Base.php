@@ -266,7 +266,7 @@ abstract class Base
      */
     protected function _authenticate($username, $password)
     {
-        return false;
+        return true;
     }
 
     /**

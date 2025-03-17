@@ -161,7 +161,6 @@ class AuthenticationFactory
         $service = $this->getService($service_name);
 
         if ($service !== null) {
-
             $service->setUserName($username);
 
             foreach ($service->supportedAuthenticators() as $authname) {
@@ -188,8 +187,8 @@ class AuthenticationFactory
                                 get_class($service),
                                 get_class($authenticator)
                             ));
-                            // TODO: was  return false;
-                            return true;
+
+                            return false;
                         }
                     } else {
                         syslog(LOG_DEBUG, sprintf(
@@ -211,8 +210,7 @@ class AuthenticationFactory
             !empty($authenticator) ? get_class($authenticator) : '-'
         ));
 
-        // TODO: was  return false;
-        return true;
+        return false;
     }
 
     /**
