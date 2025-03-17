@@ -216,7 +216,7 @@ function session_auth()
 
     /* Show login page if they aren't logged in */
     if (empty($_SESSION['Username'])) {
-        return true;
+        return false;
     }
 
     /* If session timeout isn't set, we don't mark sessions stale */
