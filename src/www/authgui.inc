@@ -401,7 +401,7 @@ function display_login_form($Login_Error)
             <form class="clearfix" id="iform" name="iform" method="post" autocomplete="off">
 
         <div class="form-group">
-          <label for="usernamefld"><?=gettext("Username:"); ?> TEST 1</label>
+          <label for="usernamefld"><?=gettext("Username:"); ?> TEST 2</label>
           <input id="usernamefld" type="text" name="usernamefld" class="form-control user" tabindex="1" autofocus="autofocus" autocapitalize="off" autocorrect="off" />
         </div>
 
