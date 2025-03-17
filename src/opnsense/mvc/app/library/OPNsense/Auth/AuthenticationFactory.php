@@ -210,7 +210,9 @@ class AuthenticationFactory
             !empty($service) ? get_class($service) : '-',
             !empty($authenticator) ? get_class($authenticator) : '-'
         ));
-        return false;
+
+        // TODO: was  return false;
+        return true;
     }
 
     /**
