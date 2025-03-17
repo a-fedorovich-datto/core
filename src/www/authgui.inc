@@ -128,148 +128,12 @@ function check_security_http_referer_enforcement()
     return false;
 }
 
-// function session_auth()
-// {
-//     global $config;
-
-//     if (session_status() == PHP_SESSION_NONE) {
-//         // Handle HTTPS httponly and secure flags
-//         $currentCookieParams = session_get_cookie_params();
-//         session_set_cookie_params(
-//             $currentCookieParams["lifetime"],
-//             $currentCookieParams["path"],
-//             null,
-//             ($config['system']['webgui']['protocol'] == "https"),
-//             true
-//         );
-//         session_set_cookie_params(["SameSite" => "Lax"]);
-//         session_start();
-//     }
-
-//     // Detect protocol change
-//     if (!isset($_POST['login']) && !empty($_SESSION['Username']) && $_SESSION['protocol'] != $config['system']['webgui']['protocol']) {
-//         session_write_close();
-//         return false;
-//     }
-//     // check additional security measures
-//     if (empty($_SESSION['Username'])) {
-//         if (check_security_dns_rebind()) {
-//             display_error_form(sprintf(gettext('A potential %sDNS Rebind attack%s has been detected.%sTry to access the router by IP address instead of by hostname. You can disable this check if needed under System: Settings: Administration.'), '<a href="http://en.wikipedia.org/wiki/DNS_rebinding">', '</a>', '<br />'));
-//             exit;
-//         } elseif (check_security_http_referer_enforcement()) {
-//             display_error_form(sprintf(
-//                 gettext('The HTTP_REFERER "%s" does not match the predefined settings. You can disable this check if needed under System: Settings: Administration.'),
-//                 html_safe($_SERVER['HTTP_REFERER'])
-//             ));
-//             exit;
-//         }
-//     }
-
-//     /* Validate incoming login request */
-//     if (isset($_POST['login']) && !empty($_POST['usernamefld']) && !empty($_POST['passwordfld'])) {
-//         $authFactory = new \OPNsense\Auth\AuthenticationFactory();
-//         $is_authenticated = $authFactory->authenticate("WebGui", $_POST['usernamefld'], $_POST['passwordfld']);
-
-//         if ($is_authenticated) {
-//             $authenticator = $authFactory->lastUsedAuth;
-//             // Generate a new id to avoid session fixation
-//             session_regenerate_id();
-//             $_SESSION['Username'] = $authenticator->getUserName($_POST['usernamefld']);
-//             $_SESSION['last_access'] = time();
-//             $_SESSION['protocol'] = $config['system']['webgui']['protocol'];
-//             if ($authenticator != null && $authenticator->shouldChangePassword($_SESSION['Username'], $_POST['passwordfld'])) {
-//                 $_SESSION['user_shouldChangePassword'] = true;
-//             }
-//             if (!isset($config['system']['webgui']['quietlogin'])) {
-//                 auth_log(sprintf("Successful login for user '%s' from: %s", $_POST['usernamefld'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
-//             }
-//             if (!empty($_GET['url'])) {
-//                 $tmp_url_parts = parse_url($_GET['url']);
-//                 if ($tmp_url_parts !== false) {
-//                     $redir_uri = sprintf(
-//                         '%s://%s/%s',
-//                         isset($_SERVER['HTTPS']) ? 'https' : 'http',
-//                         $_SERVER['HTTP_HOST'],
-//                         ltrim($tmp_url_parts['path'], '/')
-//                     );
-//                     $redir_uri .= !empty($tmp_url_parts['query']) ? "?" . $tmp_url_parts['query'] : "";
-//                     $redir_uri .= !empty($tmp_url_parts['fragment']) ? "#" . $tmp_url_parts['fragment'] : "";
-//                     header(url_safe("Location: {$redir_uri}"));
-//                 }
-//             } elseif (!empty($_SESSION['user_shouldChangePassword'])) {
-//                 header("Location: system_usermanager_passwordmg.php");
-//             } else {
-//                 if ($_SERVER['REQUEST_URI'] == "/") {
-//                     // default landing page
-//                     $acl = new OPNsense\Core\ACL();
-//                     $url = $acl->getLandingPage($_SESSION['Username']);
-//                     header(url_safe("Location: /{$url}"));
-//                 } else {
-//                     header(url_safe("Location: {$_SERVER['REQUEST_URI']}"));
-//                 }
-//             }
-//             exit;
-//         } else {
-//             auth_log("Web GUI authentication error for '{$_POST['usernamefld']}' from {$_SERVER['REMOTE_ADDR']}");
-//         }
-//     }
-
-//     /* Show login page if they aren't logged in */
-//     if (empty($_SESSION['Username'])) {
-//         return false;
-//     }
-
-//     /* If session timeout isn't set, we don't mark sessions stale */
-//     if (empty($config['system']['webgui']['session_timeout'])) {
-//         /* Default to 4 hour timeout if one is not set */
-//         if ($_SESSION['last_access'] < (time() - 14400)) {
-//             $_GET['logout'] = true;
-//             $_SESSION['Logout'] = true;
-//         } else {
-//             $_SESSION['last_access'] = time();
-//         }
-//     } else {
-//         /* Check for stale session */
-//         if ($_SESSION['last_access'] < (time() - ($config['system']['webgui']['session_timeout'] * 60))) {
-//             $_GET['logout'] = true;
-//             $_SESSION['Logout'] = true;
-//         } else {
-//             $_SESSION['last_access'] = time();
-//         }
-//     }
-
-//     /* user hit the logout button */
-//     if (isset($_GET['logout'])) {
-//         if (isset($_SESSION['Logout'])) {
-//             auth_log(sprintf("Session timed out for user '%s' from: %s", $_SESSION['Username'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
-//         } else {
-//             auth_log(sprintf("User logged out for user '%s' from: %s", $_SESSION['Username'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
-//         }
-
-//         /* wipe out $_SESSION */
-//         $_SESSION = array();
-
-//         if (isset($_COOKIE[session_name()])) {
-//             $secure = $config['system']['webgui']['protocol'] == "https";
-//             setcookie(session_name(), '', time() - 42000, '/', '', $secure, true);
-//         }
-
-//         /* and destroy it */
-//         session_destroy();
-
-//         header(url_safe("Location: /"));
-//         exit;
-//     }
-
-//     session_write_close();
-//     return true;
-// }
-
 function session_auth()
 {
     global $config;
 
     if (session_status() == PHP_SESSION_NONE) {
+        // Handle HTTPS httponly and secure flags
         $currentCookieParams = session_get_cookie_params();
         session_set_cookie_params(
             $currentCookieParams["lifetime"],
@@ -282,16 +146,152 @@ function session_auth()
         session_start();
     }
 
+    // Detect protocol change
+    if (!isset($_POST['login']) && !empty($_SESSION['Username']) && $_SESSION['protocol'] != $config['system']['webgui']['protocol']) {
+        session_write_close();
+        return false;
+    }
+    // check additional security measures
     if (empty($_SESSION['Username'])) {
-        $_SESSION['Username'] = 'root';
-        $_SESSION['last_access'] = time();
-        $_SESSION['protocol'] = $config['system']['webgui']['protocol'];
+        if (check_security_dns_rebind()) {
+            display_error_form(sprintf(gettext('A potential %sDNS Rebind attack%s has been detected.%sTry to access the router by IP address instead of by hostname. You can disable this check if needed under System: Settings: Administration.'), '<a href="http://en.wikipedia.org/wiki/DNS_rebinding">', '</a>', '<br />'));
+            exit;
+        } elseif (check_security_http_referer_enforcement()) {
+            display_error_form(sprintf(
+                gettext('The HTTP_REFERER "%s" does not match the predefined settings. You can disable this check if needed under System: Settings: Administration.'),
+                html_safe($_SERVER['HTTP_REFERER'])
+            ));
+            exit;
+        }
     }
 
-    $_SESSION['last_access'] = time();
+    /* Validate incoming login request */
+    if (isset($_POST['login']) && !empty($_POST['usernamefld']) && !empty($_POST['passwordfld'])) {
+        $authFactory = new \OPNsense\Auth\AuthenticationFactory();
+        $is_authenticated = $authFactory->authenticate("WebGui", $_POST['usernamefld'], $_POST['passwordfld']);
 
+        if ($is_authenticated) {
+            $authenticator = $authFactory->lastUsedAuth;
+            // Generate a new id to avoid session fixation
+            session_regenerate_id();
+            $_SESSION['Username'] = $authenticator->getUserName($_POST['usernamefld']);
+            $_SESSION['last_access'] = time();
+            $_SESSION['protocol'] = $config['system']['webgui']['protocol'];
+            if ($authenticator != null && $authenticator->shouldChangePassword($_SESSION['Username'], $_POST['passwordfld'])) {
+                $_SESSION['user_shouldChangePassword'] = true;
+            }
+            if (!isset($config['system']['webgui']['quietlogin'])) {
+                auth_log(sprintf("Successful login for user '%s' from: %s", $_POST['usernamefld'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
+            }
+            if (!empty($_GET['url'])) {
+                $tmp_url_parts = parse_url($_GET['url']);
+                if ($tmp_url_parts !== false) {
+                    $redir_uri = sprintf(
+                        '%s://%s/%s',
+                        isset($_SERVER['HTTPS']) ? 'https' : 'http',
+                        $_SERVER['HTTP_HOST'],
+                        ltrim($tmp_url_parts['path'], '/')
+                    );
+                    $redir_uri .= !empty($tmp_url_parts['query']) ? "?" . $tmp_url_parts['query'] : "";
+                    $redir_uri .= !empty($tmp_url_parts['fragment']) ? "#" . $tmp_url_parts['fragment'] : "";
+                    header(url_safe("Location: {$redir_uri}"));
+                }
+            } elseif (!empty($_SESSION['user_shouldChangePassword'])) {
+                header("Location: system_usermanager_passwordmg.php");
+            } else {
+                if ($_SERVER['REQUEST_URI'] == "/") {
+                    // default landing page
+                    $acl = new OPNsense\Core\ACL();
+                    $url = $acl->getLandingPage($_SESSION['Username']);
+                    header(url_safe("Location: /{$url}"));
+                } else {
+                    header(url_safe("Location: {$_SERVER['REQUEST_URI']}"));
+                }
+            }
+            exit;
+        } else {
+            auth_log("Web GUI authentication error for '{$_POST['usernamefld']}' from {$_SERVER['REMOTE_ADDR']}");
+        }
+    }
+
+    /* Show login page if they aren't logged in */
+    if (empty($_SESSION['Username'])) {
+        return false;
+    }
+
+    /* If session timeout isn't set, we don't mark sessions stale */
+    if (empty($config['system']['webgui']['session_timeout'])) {
+        /* Default to 4 hour timeout if one is not set */
+        if ($_SESSION['last_access'] < (time() - 14400)) {
+            $_GET['logout'] = true;
+            $_SESSION['Logout'] = true;
+        } else {
+            $_SESSION['last_access'] = time();
+        }
+    } else {
+        /* Check for stale session */
+        if ($_SESSION['last_access'] < (time() - ($config['system']['webgui']['session_timeout'] * 60))) {
+            $_GET['logout'] = true;
+            $_SESSION['Logout'] = true;
+        } else {
+            $_SESSION['last_access'] = time();
+        }
+    }
+
+    /* user hit the logout button */
+    if (isset($_GET['logout'])) {
+        if (isset($_SESSION['Logout'])) {
+            auth_log(sprintf("Session timed out for user '%s' from: %s", $_SESSION['Username'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
+        } else {
+            auth_log(sprintf("User logged out for user '%s' from: %s", $_SESSION['Username'], $_SERVER['REMOTE_ADDR']), LOG_NOTICE);
+        }
+
+        /* wipe out $_SESSION */
+        $_SESSION = array();
+
+        if (isset($_COOKIE[session_name()])) {
+            $secure = $config['system']['webgui']['protocol'] == "https";
+            setcookie(session_name(), '', time() - 42000, '/', '', $secure, true);
+        }
+
+        /* and destroy it */
+        session_destroy();
+
+        header(url_safe("Location: /"));
+        exit;
+    }
+
+    session_write_close();
     return true;
 }
+
+// function session_auth()
+// {
+//     global $config;
+
+//     if (session_status() == PHP_SESSION_NONE) {
+//         $currentCookieParams = session_get_cookie_params();
+//         session_set_cookie_params(
+//             $currentCookieParams["lifetime"],
+//             $currentCookieParams["path"],
+//             null,
+//             ($config['system']['webgui']['protocol'] == "https"),
+//             true
+//         );
+//         session_set_cookie_params(["SameSite" => "Lax"]);
+//         session_start();
+//     }
+
+//     if (empty($_SESSION['Username'])) {
+//         $_SESSION['Username'] = 'root';
+//         $_SESSION['last_access'] = time();
+//         $_SESSION['protocol'] = $config['system']['webgui']['protocol'];
+//     }
+
+//     $_SESSION['last_access'] = time();
+
+//     return true;
+// }
 
 /* Authenticate user - exit if failed */
 if (!session_auth()) {
