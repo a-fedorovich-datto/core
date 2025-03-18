@@ -179,8 +179,8 @@ if ($_SERVER['REQUEST_URI'] == '/') {
 ////////////////////
 ////////////////////
 
-$key = '<key-provided-by-open-mesh>';
-$secret = '<secret-provided-by-open-mesh>';
+$key = 'k1KdzgYDIKE5FCYxQf4_Tka7fLrsc8BBENDfS7Oq21hguIqBekEknlxeLeBiw3Gb';
+$secret = '8vkqDhscvYkPoBZN4ErTMY8dhhdvEVicnBJfhVKL4RmWT6wraUyCYs_iN1U6n18t';
 
 class Method
 {
@@ -282,9 +282,6 @@ function call_api_server($method, $endpoint, $data) {
 
 
 $data = call_api_server(Method::GET, "/network/list", NULL);
-$var_dump('KOKOKO');
-
-
 
 
 //////////////////// END
