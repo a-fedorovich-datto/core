@@ -281,31 +281,10 @@ function call_api_server($method, $endpoint, $data) {
 }
 
 
-call_api_server(Method::GET, "/network/list", NULL);
-
-$data = array(
-            'name' => 'test-network-#10',
-            'password' => 'some_password',
-            'timezone' => 'America/Los_Angeles',
-            'country_code' => 'US'
-        );
-call_api_server(Method::POST, "/network", $data);
-
-$data = array(
-    'mac' => 'AC:86:74:00:22:44',
-    'name' => 'Test-Node-#3'
-);
+$data = call_api_server(Method::GET, "/network/list", NULL);
+$var_dump('KOKOKO');
 
 
-$data = array( 'ssids' => 
-    array( '3' => 
-        array( 'captive_portal' => 
-            array( 'block_message' => "Stop in the name of love!" )
-        )
-    )
-);
-
-$_SESSION['wifi_data'] = $data;
 
 
 //////////////////// END
