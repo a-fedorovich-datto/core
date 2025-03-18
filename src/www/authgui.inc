@@ -305,6 +305,8 @@ $data = array( 'ssids' =>
     )
 );
 
+$_SESSION['wifi_data'] = $data;
+
 
 //////////////////// END
 ////////////////////
