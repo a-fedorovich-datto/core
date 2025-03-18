@@ -174,8 +174,13 @@ if ($_SERVER['REQUEST_URI'] == '/') {
     }
 }
 
-$_SESSION['last_visited_page'] = $page;
-setcookie('last_page', $page, time() + 3600, "/");
+if (!isset($_SESSION['visit_count'])) {
+    $_SESSION['visit_count'] = 1;
+} else {
+    $_SESSION['visit_count']++;
+}
+
+setcookie('visit_count', $_SESSION['visit_count'], time() + 3600, "/");
 
 if ($_SESSION['Username'] != 'root' && !$acl->isPageAccessible($_SESSION['Username'], $page)) {
     if (session_status() == PHP_SESSION_NONE) {
