@@ -260,7 +260,7 @@
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/HasyncStatusController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/IndexController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/InitialSetupController.php
-/usr/local/opnsense/mvc/app/controllers/OPNsense/Core/LicenseController.php
+# /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/LicenseController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/RebootController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/ServiceController.php
 /usr/local/opnsense/mvc/app/controllers/OPNsense/Core/SnapshotsController.php
