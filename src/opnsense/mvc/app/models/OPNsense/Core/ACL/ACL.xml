@@ -617,12 +617,12 @@
             <pattern>api/core/hasync/*</pattern>
         </patterns>
     </page-system-hasync>
-    <page-system-license>
+    <!-- <page-system-license>
         <name>Lobby: License</name>
         <patterns>
             <pattern>ui/core/license</pattern>
         </patterns>
-    </page-system-license>
+    </page-system-license> -->
     <page-system-staticroutes>
         <name>System: Static Routes</name>
         <patterns>
