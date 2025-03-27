@@ -71,11 +71,11 @@
 
 
 
-*{
+* {
     -webkit-font-smoothing: antialiased;
 }
 
-html, body{
+html, body {
   height: 100%;
   background-color: map-get($colors, body-background);
 }
@@ -96,7 +96,7 @@ body{
   z-index: 2;
 }
 
-.page-content{
+.page-content {
   height: calc(100% - 62px);
   padding-top: 62px;
   position: relative;
@@ -129,7 +129,7 @@ body{
   padding: 15px 0 (15px + 58px);
 }
 
-.page-side{
+.page-side {
   background: #FFF;
   border-right: 1px solid rgba(0,0,0,.15);
   height: 100% !important;
