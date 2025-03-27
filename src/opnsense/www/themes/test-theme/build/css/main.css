@@ -6722,7 +6722,7 @@ body {
 }
 
 .page-content-main {
-  background: #F7F7F7;
+  background: #6554C0;
   min-height: calc(100% - 64px);
   padding: 15px 0 73px;
 }
@@ -6813,7 +6813,7 @@ body {
 }
 
 .page-login {
-  background: #F7F7F7;
+  background: #6554C0;
 }
 .page-login .container {
   min-height: 100%;
@@ -7168,7 +7168,7 @@ hr {
 .active-menu-title, .active-menu a {
   text-decoration: none;
   position: relative;
-  background-color: #F7F7F7;
+  background-color: #6554C0;
 }
 .active-menu-title:before, .active-menu a:before {
   width: 3px;
