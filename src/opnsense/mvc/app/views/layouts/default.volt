@@ -261,7 +261,7 @@
         <header class="page-content-head">
           <div class="container-fluid">
             <ul class="list-inline">
-              <li><h1>{{title | default("")}}</h1></li>
+              <li><h1>{{title | default("")}} TEST_THEME</h1></li>
               <li class="btn-group-container" id="service_status_container"></li>
             </ul>
           </div>
