@@ -11,6 +11,26 @@
   font-family: "SourceSansProRegular";
   src: url("/ui/themes/opnsense/build/fonts/SourceSansPro-Regular/SourceSansPro-Regular.woff") format("woff"), url("/ui/themes/opnsense/build/fonts/SourceSansPro-Regular/SourceSansPro-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: 'SourceSansProRegular';
+  src: url('/ui/themes/opnsense/build/fonts/SourceSansPro-Regular/SourceSansPro-Regular.woff') format('woff'),
+       url('/ui/themes/opnsense/build/fonts/SourceSansPro-Regular/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoSemibold';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
