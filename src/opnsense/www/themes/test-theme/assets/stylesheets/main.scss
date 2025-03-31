@@ -18,6 +18,21 @@
        url('/ui/themes/opnsense/build/fonts/SourceSansPro-Regular/SourceSansPro-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoSemibold';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoRegular';
+  src: url('/ui/themes/opnsense/build/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
 // Core variables and mixins
 @import "bootstrap/variables";
 @import "bootstrap/mixins";

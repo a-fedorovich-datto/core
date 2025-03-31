@@ -287,7 +287,7 @@ div {
 }
 
 .flextable-row:hover {
-  background: #6554C0 !important;
+  background: #F7F7F7 !important;
 }
 
 .flex-cell {
@@ -312,7 +312,7 @@ div {
 }
 
 .column .flex-cell:hover {
-  background: #6554C0;
+  background: #F7F7F7;
 }
 
 .flex-subcell {
@@ -339,7 +339,7 @@ div {
 }
 
 .grid-row:hover {
-  background: #6554C0 !important;
+  background: #F7F7F7 !important;
 }
 
 .grid-header {

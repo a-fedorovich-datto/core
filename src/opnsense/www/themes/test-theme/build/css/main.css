@@ -1138,7 +1138,7 @@ html {
 }
 
 body {
-  font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "RobotoRegular", "SourceSansProRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.2;
@@ -6722,7 +6722,7 @@ body {
 }
 
 .page-content-main {
-  background: #6554C0;
+  background: #F7F7F7;
   min-height: calc(100% - 64px);
   padding: 15px 0 73px;
 }
@@ -6813,7 +6813,7 @@ body {
 }
 
 .page-login {
-  background: #6554C0;
+  background: #F7F7F7;
 }
 .page-login .container {
   min-height: 100%;
@@ -7168,7 +7168,7 @@ hr {
 .active-menu-title, .active-menu a {
   text-decoration: none;
   position: relative;
-  background-color: #6554C0;
+  background-color: #F7F7F7;
 }
 .active-menu-title:before, .active-menu a:before {
   width: 3px;
