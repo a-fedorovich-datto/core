@@ -160,7 +160,8 @@ body{
 }
 
 .page-foot {
-  background: map-get($colors, page-foot-background);
+  // background: map-get($colors, page-foot-background);
+  background: red;
   bottom: 0;
   border-top: 1px solid rgba(#D9D9D9, .50);
   font-size: 12px;
