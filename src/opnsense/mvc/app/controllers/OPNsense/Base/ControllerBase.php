@@ -80,7 +80,8 @@ class ControllerBase extends ControllerRoot
           '/ui/js/bootstrap.min.js',
           '/ui/js/bootstrap-select.min.js',
           // bootstrap dialog
-          '/ui/js/bootstrap-dialog.min.js'
+          '/ui/js/bootstrap-dialog.min.js',
+          '/ui/js/web-components.js',
         ];
     }
 

@@ -44,6 +44,7 @@
 
 <ul class="nav nav-tabs" data-tabs="tabs" id="maintabs">
 </ul>
+
 <div class="tab-content content-box">
     <div id="settings"  class="tab-pane fade in active">
         {{ partial("layout_partials/base_form",['fields':formGeneralSettings,'id':'frm_generalsettings'])}}
