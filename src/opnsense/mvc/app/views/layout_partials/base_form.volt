@@ -63,7 +63,7 @@
         <tr>
             <td style="text-align:left">
               {% if advanced|default(false) %}
-                <opnsense-checkbox>Test Checkbox Component</opnsense-checkbox>
+                <opnsense-checkbox>Test Checkbox Web Component</opnsense-checkbox>
                 <a href="#">
                   <i class="fa fa-toggle-off text-danger" id="show_advanced_{{base_form_id}}"></i>
                 </a>
