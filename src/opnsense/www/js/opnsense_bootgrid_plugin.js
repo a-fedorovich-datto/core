@@ -274,7 +274,8 @@ $.fn.UIBootgrid = function (params) {
         let editDlg = this_grid.attr('data-editDialog');
         let urlMap = {};
         let server_params = undefined;
-
+        console.log('KOKO: ', editDlg);
+        
         urlMap['frm_' + editDlg] = endpoint;
         if (this_grid.requestHandler !== null) {
             // our requestHandler returns a JSON object, convert it back first
