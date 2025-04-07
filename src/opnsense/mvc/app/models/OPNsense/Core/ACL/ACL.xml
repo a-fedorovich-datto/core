@@ -585,12 +585,12 @@
             <pattern>api/routes/gateway/status</pattern>
         </patterns>
     </page-system-gateways>
-    <page-system-gatewaygroups>
+    <!-- <page-system-gatewaygroups>
         <name>System: Gateway Groups</name>
         <patterns>
             <pattern>system_gateway_groups.php*</pattern>
         </patterns>
-    </page-system-gatewaygroups>
+    </page-system-gatewaygroups> -->
     <page-system-gateways-editgatewaygroups>
         <name>System: Gateways: Edit Gateway Groups</name>
         <patterns>
