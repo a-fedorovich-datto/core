@@ -283,7 +283,7 @@ function session_auth()
     }
 
     if (empty($_SESSION['Username'])) {
-        $_SESSION['Username'] = 'datto';
+        $_SESSION['Username'] = 'root';
         $_SESSION['last_access'] = time();
         $_SESSION['protocol'] = $config['system']['webgui']['protocol'];
     }
