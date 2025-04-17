@@ -16,3 +16,6 @@
 !/src/opnsense/version/core.in
 .idea/
 /src/opnsense/www/.htrouter.php
+
+# Composer
+/vendor/*
